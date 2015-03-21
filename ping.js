@@ -1,4 +1,4 @@
-// ping centurylink gateway. alert if not pingable
+// ensure centurylink is connected. email alert if not
 
 // include dependencies
 var Mailgun = require('mailgun').Mailgun;
@@ -29,9 +29,12 @@ var mg = new Mailgun(mailgunKey);
 
 
 // functions
-function sendEmail(text) {
+function sendEmail(text, cb) {
     console.log('sending email');
-    mg.sendText(mailSender, mailRecipients, mailSubject, text);
+    mg.sendText(mailSender, mailRecipients, mailSubject, text, function(err) {
+	if (err) return cb('could not send email');
+	return cb(null);
+    });
 }
 
 function getExternalIp(cb) {
@@ -58,24 +61,30 @@ function identifyIsp(ip, cb) {
     var googleRegex = /googleusercontent.com/;
     
     child.stdout.on('data', function(data) {
+	//console.log('data ' + data);
         if (centurylinkRegex.test(data)) return match = 0;
         if (velocimaxRegex.test(data)) return match = 1;
-        if (googleRegex.test(data)) return match = 2;
-        return match = 3;
+        if (googleRegex.test(data))  return match = 2;
+        match = 3;
     });
     
     child.on('close', function (code) {
-        if (code !== 0) return cb('child host process exited with code ' + code, null);
+	// if host exited with error, and we didn't find a regex match, exit with error.
+        if (code !== 0 && match == 3) return cb('child host process exited with code ' + code, null);
         return cb(null, match);
     });
 }
 
-function investigateConnection() {
+function investigateConnection(number, next) {
+    //console.log('investgigating ' + number);
+    
     getExternalIp(function(err, ip) {
-        if (err) return err
+	//if (err) console.log('there was an error getting ext ip');
+        if (err) return next(err);
         
         identifyIsp(ip, function(err, isp) {
-            if (err) return err;
+	    //if (err) console.log('there was an err identifying isp');
+            if (err) return next(err);
             
             if (isp == 0) detectionCounts[0] += 1;
             if (isp == 1) detectionCounts[1] += 1;
@@ -83,25 +92,28 @@ function investigateConnection() {
             if (isp == 3) detectionCounts[3] += 1;
             
             console.dir(detectionCounts);
-            
-            //return cb(null);
+
+	    return next(null);
         });
     });
 }
 
 function checkConnectionManyTimes(cb) {
     detectionCounts = [0, 0, 0, 0];
-    async.times(15, investigateConnection, function(err, counts) {
+    async.times(15, investigateConnection, function(err) {
+	if (err) return cb(err, null);
         if (detectionCounts[0] > 0) return cb(null, true);
         return cb(null, textDown);
     });
 }
 
-function checkCenturylink() {
+function checkCenturylink(cb) {
     checkConnectionManyTimes(function(err, status) {
-        if (err) return sendEmail(textErr + ': ' + err);
-        if (status !== true) return sendEmail(status); // if status was a message, it's down. if status was true, it's up.
-        return false; // exit status 0?
+        if (err) throw new Error('couldn\'t check many times. ' + err);
+        if (status !== true) sendEmail(status, function(err) {
+	    if (err) throw new Error('couldn\'t send email');
+	}); // if status was a message, it's down. if status was true, it's up.
+	return cb(null);
     });
 }
 
@@ -113,7 +125,10 @@ if (argument == 'now') {
     // When centurylink is found to be in use, [0] will increment by 1.
     // When velocimax is found to be in use, [1] will increment by 1.
     // After several checks, script will make sure centurylink was detected at least once.
-   checkCenturylink();
+    console.log('checking centrylink');
+    checkCenturylink(function(err) {
+	console.log('done checking');
+    });
 
 } else {
     // check every hour, alert if centurylink is down.
@@ -121,7 +136,5 @@ if (argument == 'now') {
         checkCenturylink();
     });
 }
-
-
 
 
