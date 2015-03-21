@@ -8,6 +8,7 @@ var path = require('path');
 var stun = require('vs-stun');
 var spawn = require('child_process').spawn;
 var async = require('async');
+var moment = require('moment');
 
 //  get the command line argument if there was one
 var argument = process.argv[2];
@@ -127,13 +128,15 @@ if (argument == 'now') {
     // After several checks, script will make sure centurylink was detected at least once.
     console.log('checking centrylink');
     checkCenturylink(function(err) {
-	console.log('done checking');
+	console.log('manual check done ' + moment().format('LLLL'));
     });
 
 } else {
     // check every hour, alert if centurylink is down.
     schedule.scheduleJob('48 * * * *', function(){
-        checkCenturylink();
+        checkCenturylink(function(err) {
+            console.log('auto check done ' + moment().format('LLLL'));
+        });
     });
 }
 

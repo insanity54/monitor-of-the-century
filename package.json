@@ -23,6 +23,7 @@
     "forever-monitor": "1.5.2",
     "mailgun": "0.5.0",
     "mocha": "^2.2.1",
+    "moment": "^2.9.0",
     "nconf": "0.7.1",
     "node-schedule": "0.2.6",
     "ping": "0.1.9",
