@@ -49,7 +49,7 @@ requires a file /config.json which contains the following directives:
 example config file:
 
     {
-        "MAILGUN_KEY": "9827498237498723984723987492374",
+        "MAILGUN_KEY": "key-2a8d38f57f293b857c382bd9a4b9e23e",
         "ALERT_SENDER": "chris@grimtech.net",
         "ALERT_RECIPIENTS": ["chris@grimtech.net"],
         "ALERT_SUBJECT": "CCC Alert",
