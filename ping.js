@@ -4,7 +4,6 @@
 var Mailgun = require('mailgun').Mailgun;
 var schedule = require('node-schedule');
 var nconf = require('nconf');
-//var ping = require('ping');
 var path = require('path');
 var stun = require('vs-stun');
 var spawn = require('child_process').spawn;
@@ -30,8 +29,8 @@ var mg = new Mailgun(mailgunKey);
 
 
 // functions
-function alarm(text) {
-    console.log('function alarm');
+function sendEmail(text) {
+    console.log('sending email');
     mg.sendText(mailSender, mailRecipients, mailSubject, text);
 }
 
@@ -50,13 +49,6 @@ function getExternalIp(cb) {
     };
     stun.connect(server, onConnect);
 }
-
-// function pingCentury() {
-//     ping.sys.probe(centurylinkGateway, function(isAlive) {
-//         if (!isAlive) return alarm(textDown);
-//         console.log('century is up');
-//     });
-// }
 
 function identifyIsp(ip, cb) {
     var match;
@@ -80,10 +72,10 @@ function identifyIsp(ip, cb) {
 
 function investigateConnection() {
     getExternalIp(function(err, ip) {
-        if (err) return alarm(textErr + ': ' + err);
+        if (err) return err
         
         identifyIsp(ip, function(err, isp) {
-            if (err) return alarm(textErr + ': ' + err);
+            if (err) return err;
             
             if (isp == 0) detectionCounts[0] += 1;
             if (isp == 1) detectionCounts[1] += 1;
@@ -107,8 +99,8 @@ function checkConnectionManyTimes(cb) {
 
 function checkCenturylink() {
     checkConnectionManyTimes(function(err, status) {
-        if (err) return alert(textErr + ': ' + err);
-        if (status !== true) return alert(status); // if status was a message, it's down. if status was true, it's up.
+        if (err) return sendEmail(textErr + ': ' + err);
+        if (status !== true) return sendEmail(status); // if status was a message, it's down. if status was true, it's up.
         return false; // exit status 0?
     });
 }
