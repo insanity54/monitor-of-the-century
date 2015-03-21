@@ -10,7 +10,7 @@ It's a node app, probably only runs on *nix because there's a dependency on `hos
 
   - generate a `/config.json` file (see below)
   - npm install
-  - npm test (optional, requies mocha, tests are incomplete and sukky.)
+  - npm test (optional, requires mocha, tests are incomplete and sukky.)
   
 K now you have two options to keep this thing running in the background. One is untested and sukky, the other is tried and true.
 
