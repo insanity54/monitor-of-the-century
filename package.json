@@ -1,0 +1,29 @@
+{
+  "name": "monitor-of-the-century",
+  "version": "1.0.0",
+  "description": "monitor centurylink",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/insanity54/monitor-of-the-century"
+  },
+  "author": "Chris Grimmett <chris@grimtech.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/insanity54/monitor-of-the-century/issues"
+  },
+  "homepage": "https://github.com/insanity54/monitor-of-the-century",
+  "dependencies": {
+    "async": "0.9.0",
+    "forever-monitor": "1.5.2",
+    "mailgun": "0.5.0",
+    "nconf": "0.7.1",
+    "node-schedule": "0.2.6",
+    "ping": "0.1.9",
+    "vs-stun": "0.0.7"
+  }
+}
