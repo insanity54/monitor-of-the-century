@@ -4,7 +4,7 @@
   "description": "monitor centurylink",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index",
     "test": "mocha"
   },
   "repository": {
@@ -19,14 +19,17 @@
   "homepage": "https://github.com/insanity54/monitor-of-the-century",
   "dependencies": {
     "async": "0.9.0",
-    "chai": "^2.1.2",
+    "express": "^4.12.3",
     "forever-monitor": "1.5.2",
     "mailgun": "0.5.0",
-    "mocha": "^2.2.1",
     "moment": "^2.9.0",
-    "nconf": "0.7.1",
+    "nconf": "^0.7.1",
     "node-schedule": "0.2.6",
-    "ping": "0.1.9",
+    "request": "^2.55.0",
     "vs-stun": "0.0.7"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.4"
   }
 }

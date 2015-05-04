@@ -1,0 +1,5 @@
+{
+    "enabled": true,
+    "check": "centurylink",
+    "schedule": "48 * * * *"
+}

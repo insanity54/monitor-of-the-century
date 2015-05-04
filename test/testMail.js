@@ -6,7 +6,7 @@ var nconf = require('nconf');
 var path = require('path');
 
 
-nconf.file(path.join(__dirname, 'config.json'));
+nconf.file(path.join(__dirname, '..', 'config.json'));
 
 
 describe('Mailgun', function() {
