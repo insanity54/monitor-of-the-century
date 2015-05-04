@@ -32,7 +32,7 @@ When the y2kmon process runs, it loads all valid tasks into memory, and runs the
 
 All enabled tasks are loaded into memory. This probably won't scale well.
 
-
+    
 ## Config
 
 requires a file /config.json which contains the following directives:
@@ -50,14 +50,12 @@ requires a file /config.json which contains the following directives:
 example config file:
 
     {
-        "MAILGUN_KEY": "9827498237498723984723987492374",
+        "MAILGUN_KEY": "key-2a8d38f57f293b857c382bd9a4b9e23e",
         "ALERT_SENDER": "chris@grimtech.net",
         "ALERT_RECIPIENTS": ["chris@grimtech.net"],
         "ALERT_SUBJECT": "CCC Alert",
         "ALERT_TEXT_DOWN": "Centurylink is down!",
         "ALERT_TEXT_SCRIPTERR": "there was a script error. plz check the script.",
-        "STUN_SERVER": "stun.l.google.com"
-        "STUN_PORT": 19302,
     }
 
 
@@ -68,5 +66,11 @@ forever will keep the script going. run with `npm start`
 
 ## notes
 
-  - pick a STUN server from this list: https://gist.github.com/zziuni/3741933
+  - You can pick a STUN server from this list: https://gist.github.com/zziuni/3741933
   - depends on cli `host` command
+  - made with hate by [Chris Grimmett] (Oops I mean love)
+
+  
+
+[forever]:https://www.npmjs.com/package/forever
+[Chris Grimmett]:http://grimtech.net/about
