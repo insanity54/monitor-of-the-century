@@ -1,0 +1,6 @@
+{
+    "enabled": true,
+    "check": "minecraft",
+    "arguments": "mc.xtoast.com",
+    "schedule": "48 * * * *"
+}
