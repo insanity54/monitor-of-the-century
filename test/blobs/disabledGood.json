@@ -1,4 +1,5 @@
 {
+    "name": "disabled yet valid"
     "enabled": false,
     "check": "centurylink",
     "schedule": "48 * * * *"

@@ -14,6 +14,7 @@ describe('Task', function() {
         it('should call back with an object containing the task', function(done) {
             task.loadAndValidateTask(path.join(__dirname, 'blobs', 'minimumGood.json'), function(err, task) {
                 expect(task).to.be.an('object');
+                expect(task).to.have.property('name');
                 expect(task).to.have.property('check');
                 expect(task).to.have.property('schedule');
                 return done();
@@ -39,6 +40,7 @@ describe('Task', function() {
         it('should accept a valid task', function(done) {
             task.loadAndValidateTask(path.join(__dirname, 'blobs', 'good.json'), function(err, task) {
                 expect(err).to.be.null;
+                expect(task).to.have.property('name');
                 expect(task).to.have.property('check');
                 expect(task).to.have.property('schedule');
                 return done();
