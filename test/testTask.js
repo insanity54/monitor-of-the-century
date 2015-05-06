@@ -3,10 +3,9 @@ var expect = require('chai').expect;
 var path = require('path');
 var task = require(path.join('..', 'lib', 'task', 'task'));
 
-describe('Task module', function() {
+describe('Task', function() {
     
 
-    
     describe('loadAndValidateTask()', function() {
         
         // we need the task definition

@@ -35,3 +35,6 @@ require(path.join(__dirname, 'lib', 'util', 'watchTask'))(app);
 
 // include control flow
 require(path.join(__dirname, 'lib', 'main'))(app);
+
+
+module.exports = app;
