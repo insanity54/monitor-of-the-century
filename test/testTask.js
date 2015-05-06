@@ -1,5 +1,4 @@
 var mocha = require('mocha');
-var assert = require('chai').assert;
 var expect = require('chai').expect;
 var path = require('path');
 var task = require(path.join('..', 'lib', 'task', 'task'));
@@ -14,7 +13,7 @@ describe('Task module', function() {
         // we need to know if there was an error
         
         it('should call back with an object containing the task', function(done) {
-            task.loadAndValidateTask(path.join(__dirname, 'blobs', 'minimumGood.json'), function(err, loaded) {
+            task.loadAndValidateTask(path.join(__dirname, 'blobs', 'minimumGood.json'), function(err, task) {
                 expect(task).to.be.an('object');
                 expect(task).to.have.property('check');
                 expect(task).to.have.property('schedule');
@@ -31,17 +30,18 @@ describe('Task module', function() {
         });
     
         it('should reject an invalid task', function(done) {
-             task.loadAndValidateTask(path.join(__dirname, 'blobs', 'notgood.json'), function(err, loaded) {
-                 assert.isNull(err);
-                 assert.isFalse(loaded, 'an invalid task was loaded');
-                 return done();
-             });
+            task.loadAndValidateTask(path.join(__dirname, 'blobs', 'notgood.json'), function(err, task) {
+                expect(err).to.not.be.null;
+                expect(task).to.be.null;
+                return done();
+            });
         });
         
         it('should accept a valid task', function(done) {
-            task.loadAndValidateTask(path.join(__dirname, 'blobs', 'good.json'), function(err, loaded) {
-                assert.isNull(err);
-                assert.isTrue(loaded, 'a valid task was not loaded');
+            task.loadAndValidateTask(path.join(__dirname, 'blobs', 'good.json'), function(err, task) {
+                expect(err).to.be.null;
+                expect(task).to.have.property('check');
+                expect(task).to.have.property('schedule');
                 return done();
             });
         });
