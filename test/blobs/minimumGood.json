@@ -1,5 +1,4 @@
 {
-    "name": "I'm a real boy",
     "check": "centurylink",
     "schedule": "48 * * * *"
 }

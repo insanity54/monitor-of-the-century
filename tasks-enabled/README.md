@@ -4,6 +4,7 @@ example task:
 
 
 {
+    "name": "fart",
     "enabled": true,
     "check": "centurylink",
     "schedule": "48 * * * *"

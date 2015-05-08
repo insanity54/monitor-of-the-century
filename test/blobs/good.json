@@ -1,5 +1,5 @@
 {
-    "name": "good task",
+    "description": "an example showing a task that is valid and enabled",
     "enabled": true,
     "check": "centurylink",
     "schedule": "48 * * * *"

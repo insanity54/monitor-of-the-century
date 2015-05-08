@@ -1,4 +1,6 @@
 {
+    "name": "Coolworld Checker",
+    "description": "Checks status of coolworld of cool (mc.xtoast.com) server every hour",
     "enabled": true,
     "check": "minecraft",
     "arguments": "mc.xtoast.com",

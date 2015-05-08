@@ -30,7 +30,6 @@ require(path.join(__dirname, 'lib', 'checks', 'minecraft'))(app);
 //require(path.join(__dirname, 'checks', 'centurylink'))(app);  //@todo conform centurylink.js to the minecraft.js format
 
 // include utility functions
-require(path.join(__dirname, 'lib', 'schedule', 'runner'))(app);
 require(path.join(__dirname, 'lib', 'util', 'watchTask'))(app);
 
 // include control flow

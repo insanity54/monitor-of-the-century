@@ -7,11 +7,13 @@ Monitor your web services with this simple tool. Requires javascript and some pa
 
 ### Terminology
 
-*Checks* are scripts which find the status of your services. Think nagios libexec. Checks return a value OK, WARNING, or CRITICAL.
+*Checks* - are scripts which find the status of your services. Think nagios libexec. Checks return a value OK, WARNING, or CRITICAL.
 
-*Tasks* are definitions that tell y2kmon when to do something, ie. execute a check script.
+*Tasks* - are definitions that tell y2kmon when to do something, ie. execute a check script.
 
-*Worker* The control flow for y2kmon. Loads checks, reads tasks. (This is really only important if you're developing y2kmon.)
+*Worker* - The control flow for y2kmon. Loads checks, reads tasks. (This is really only important if you're developing y2kmon.)
+
+*Jobs* - These are only used in the context of the schedule module. A scheduling job is created which runs a task every so often.
 
 
 ### How it works

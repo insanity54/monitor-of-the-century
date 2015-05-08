@@ -25,5 +25,17 @@ describe('Data', function() {
             });
         });
     });
+    
+    describe('getTaskByName()', function() {
+        it('should return a task given its name', function(done) {
+            data.getTaskByName('coolworl', function(err, task) {
+                expect(err).to.be.null;
+                expect(task).to.be.an('object');
+                expect(task).to.have.property('schedule');
+                expect(task).to.have.property('check');
+                done();
+            });
+        });
+    });
 
 });

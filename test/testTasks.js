@@ -1,4 +1,3 @@
-var mocha = require('mocha');
 var expect = require('chai').expect;
 var path = require('path');
 var tasks = require(path.join('..', 'lib', 'util', 'tasks'));
@@ -8,12 +7,29 @@ describe('Tasks', function() {
     
     describe('load()', function() {
         
-        it('should callback with enabledTasks and disabledTasks', function(done) {
+        it('should callback with enabledTasks and disabledTasks objects', function(done) {
             tasks.load(function(err, tasks) {
                 expect(err).to.be.null;
                 expect(tasks).to.be.an('object');
                 expect(tasks).to.have.property('enabledTasks');
                 expect(tasks).to.have.property('disabledTasks');
+                expect(tasks.enabledTasks).to.be.an('object');
+                expect(tasks.disabledTasks).to.be.an('object');
+                done();
+            });
+        });
+        
+        it('should have task names as object keys in enabledTasks', function(done) {
+            tasks.load(function(err, tasks) {
+                expect(err).to.be.null;
+                console.dir(tasks);
+                var enabledTasks = tasks.enabledTasks;
+                var firstTaskKey = Object.keys(enabledTasks);
+                console.log('first task is', firstTaskKey);
+                var firstTask = enabledTasks[firstTaskKey];
+                expect(firstTask).to.be.an('object');
+                expect(firstTask).to.have.property('check');
+                expect(firstTask).to.have.property('schedule');
                 done();
             });
         });
@@ -38,5 +54,9 @@ describe('Tasks', function() {
     
     describe('schedule()', function() {
         it('should schedule the enabled tasks');
+    });
+    
+    describe('watch()', function() {
+        it('should watch the tasks directory for changes'); 
     });
 });

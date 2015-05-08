@@ -1,5 +1,5 @@
 {
-    "name": "disabled yet valid"
+    "description": "example showing a task that is valid but disabled",
     "enabled": false,
     "check": "centurylink",
     "schedule": "48 * * * *"
