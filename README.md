@@ -70,7 +70,7 @@ forever will keep the script going. run with `npm start`
 
   - the centurylink check script needs a stun server. You can pick a STUN server from this list: https://gist.github.com/zziuni/3741933
   - the centurylink check script depends on cli `host` command (only tested on linux)
-  - made with hate by [Chris Grimmett] (Oops I mean love)
+  - made with hate by [Chris Grimmett] ...Oops I mean love
 
 
 [forever]:https://www.npmjs.com/package/forever
