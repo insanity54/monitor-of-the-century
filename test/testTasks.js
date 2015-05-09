@@ -24,7 +24,7 @@ describe('Tasks', function() {
                 expect(err).to.be.null;
                 //console.dir(tasks);
                 var enabledTasks = tasks.enabledTasks;
-                var firstTaskKey = Object.keys(enabledTasks);
+                var firstTaskKey = Object.keys(enabledTasks)[0];
                 //console.log('first task is', firstTaskKey);
                 var firstTask = enabledTasks[firstTaskKey];
                 expect(firstTask).to.be.an('object');
