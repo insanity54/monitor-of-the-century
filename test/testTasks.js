@@ -22,10 +22,10 @@ describe('Tasks', function() {
         it('should have task names as object keys in enabledTasks', function(done) {
             tasks.load(function(err, tasks) {
                 expect(err).to.be.null;
-                console.dir(tasks);
+                //console.dir(tasks);
                 var enabledTasks = tasks.enabledTasks;
                 var firstTaskKey = Object.keys(enabledTasks);
-                console.log('first task is', firstTaskKey);
+                //console.log('first task is', firstTaskKey);
                 var firstTask = enabledTasks[firstTaskKey];
                 expect(firstTask).to.be.an('object');
                 expect(firstTask).to.have.property('check');
