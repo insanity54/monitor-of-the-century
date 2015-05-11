@@ -2,8 +2,8 @@ var expect = require('chai').expect;
 var path = require('path');
 var main = require(path.join('..', 'lib', 'main'));
 var app = require(path.join('..', 'index'));
-var data = require(path.join('..', 'lib', 'data', 'data'));
-var schedule = require(path.join('..', 'lib', 'schedule', 'schedule'));
+var data = require(path.join('..', 'lib', 'data'));
+var schedule = require(path.join('..', 'lib', 'schedule'));
 
 
 describe('Main', function() {

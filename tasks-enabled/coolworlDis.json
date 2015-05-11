@@ -1,0 +1,8 @@
+{
+    "name": "CRUNCHWORLD Checker",
+    "description": "Checks status of coolworld of cool (mc.xtoast.com) server every hour",
+    "enabled": false,
+    "check": "minecraft",
+    "arguments": "crunch.xtoast.com",
+    "schedule": "49 * * * *"
+}

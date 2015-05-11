@@ -24,13 +24,8 @@ app.set('stunServer', nconf.get('STUN_SERVER'));
 app.set('tasksEnabled', []); // populated on first run, modified when valid tasks are change in ./tasks-enabled
 
 
-// include checks
-// checks are like nagios libexec scripts. scripts that actually go out and check something, get an OK, WARNING, or CRITICAL status
-require(path.join(__dirname, 'lib', 'checks', 'minecraft'))(app);
-//require(path.join(__dirname, 'checks', 'centurylink'))(app);  //@todo conform centurylink.js to the minecraft.js format
-
 // include utility functions
-require(path.join(__dirname, 'lib', 'util', 'watchTask'))(app);
+require(path.join(__dirname, 'lib', 'watchTask'))(app);
 
 // include control flow
 require(path.join(__dirname, 'lib', 'main'))(app);

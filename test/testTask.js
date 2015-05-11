@@ -1,7 +1,7 @@
 var mocha = require('mocha');
 var expect = require('chai').expect;
 var path = require('path');
-var task = require(path.join('..', 'lib', 'task', 'task'));
+var task = require(path.join('..', 'lib', 'task'));
 
 describe('Task', function() {
     

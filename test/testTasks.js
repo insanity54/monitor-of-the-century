@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var path = require('path');
-var tasks = require(path.join('..', 'lib', 'util', 'tasks'));
-var data = require(path.join('..', 'lib', 'data', 'data'));
+var tasks = require(path.join('..', 'lib', 'tasks'));
+var data = require(path.join('..', 'lib', 'data'));
 
 describe('Tasks', function() {
     
@@ -53,7 +53,13 @@ describe('Tasks', function() {
     });
     
     describe('schedule()', function() {
-        it('should schedule the enabled tasks');
+        it('should schedule the enabled tasks', function(done) {
+            tasks.schedule(function(err, schedule) {
+                expect(err).to.be.null;
+                expect(schedule).to.be.an('array');
+                done();
+            });
+        });
     });
     
     describe('watch()', function() {
