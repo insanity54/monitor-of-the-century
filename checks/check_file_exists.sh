@@ -16,7 +16,7 @@ file="${1}"
 
 
 # Check for file existance
-if [[ -f "${file}" ]]; then
+if [[ -a "${file}" ]]; then
         echo "OK - File ${file} exists"
         exit 0
 else
