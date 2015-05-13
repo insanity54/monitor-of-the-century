@@ -2,7 +2,7 @@
 
 ## About
 
-Monitor your web services with this simple tool. Requires javascript and some packages downloadable from npm.
+Monitor your web services with this simple tool. Requires node.js and some packages downloadable from npm.
 
 
 ### Terminology
@@ -63,7 +63,7 @@ example config file:
 
 ## run 
 
-forever will keep the script going. run with `npm start`
+run with `npm start`
 
 
 ## notes
@@ -73,5 +73,4 @@ forever will keep the script going. run with `npm start`
   - made with hate by [Chris Grimmett] ...Oops I mean love
 
 
-[forever]:https://www.npmjs.com/package/forever
 [Chris Grimmett]:http://grimtech.net/about
