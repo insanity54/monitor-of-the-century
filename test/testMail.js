@@ -1,30 +1,25 @@
-var mocha = require('mocha');
 var should = require('chai').should();
-var assert = require('chai').assert;
-var Mailgun = require('mailgun').Mailgun;
+var expect = require('chai').expect;
 var nconf = require('nconf');
 var path = require('path');
-
+var mail = require(path.join(__dirname, '..', 'lib', 'mail'));
 
 nconf.file(path.join(__dirname, '..', 'config.json'));
 
 
-describe('Mailgun', function() {
+describe('Mail', function() {
     it('should have a valid API key in config.json', function() {
         var mailgunKey = nconf.get('MAILGUN_KEY');
         mailgunKey.should.be.a('string');
 
-        var valid = /key-[0-9a-fA-F]{32}$/;
-        assert(valid.test(mailgunKey), 'api key not valid. must be in the format, \'key-\' followed by 32 hex characters.');
-        //assert(false, 'test');
-    }),
+        expect(mailgunKey).to.match(/key-[0-9a-fA-F]{32}$/);
+    });
     
     it('should be able to send e-mail', function(done) {
-        var mailgunKey = nconf.get('MAILGUN_KEY');
-        var mg = new Mailgun(mailgunKey);
-        mg.sendText('sender@example.com', 'recipient@example.com', 'test email', 'this is a test', function(err) {
-            assert.isUndefined(err, 'e-mail failed to send. returned HTTP status code ' + err);
+        mail.send('test email', 'this is a test', 'recipient@example.com', 'sender@example.com', function(err, ok) {
+            expect(err).to.be.null;
+            expect(ok).to.be.true;
             done();
         });
-    })
-})
+    });
+});

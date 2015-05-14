@@ -40,24 +40,18 @@ All enabled tasks are loaded into memory. This probably won't scale well.
 requires a file /config.json which contains the following directives:
 
   - MAILGUN_KEY
-  - ALERT_SENDER
-  - ALERT_RECIPIENTS
-  - ALERT_SUBJECT
-  - ALERT_TEXT_DOWN
-  - ALERT_TEXT_SCRIPTERR
-  - STUN_SERVER
-  - STUN_PORT
-  - TASKS_ENABLED
+  - NOTIF_SENDER
+  - NOTIF_RECIPIENTS
+  - NOTIF_SUBJECT_PREFIX
+
 
 example config file:
 
     {
         "MAILGUN_KEY": "key-2a8d38f57f293b857c382bd9a4b9e23e",
-        "ALERT_SENDER": "chris@grimtech.net",
-        "ALERT_RECIPIENTS": ["chris@grimtech.net"],
-        "ALERT_SUBJECT": "CCC Alert",
-        "ALERT_TEXT_DOWN": "Centurylink is down!",
-        "ALERT_TEXT_SCRIPTERR": "there was a script error. plz check the script.",
+        "NOTIF_SENDER": "chris@grimtech.net",
+        "NOTIF_RECIPIENTS": ["chris@grimtech.net"],
+        "NOTIF_SUBJECT_PREFIX": "CCC Alert",
     }
 
 
