@@ -1,4 +1,3 @@
-var should = require('chai').should();
 var expect = require('chai').expect;
 var nconf = require('nconf');
 var path = require('path');
@@ -10,8 +9,7 @@ nconf.file(path.join(__dirname, '..', 'config.json'));
 describe('Mail', function() {
     it('should have a valid API key in config.json', function() {
         var mailgunKey = nconf.get('MAILGUN_KEY');
-        mailgunKey.should.be.a('string');
-
+        expect(mailgunKey).to.be.a('string');
         expect(mailgunKey).to.match(/key-[0-9a-fA-F]{32}$/);
     });
     
