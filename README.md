@@ -26,7 +26,7 @@ A task is created that tells y2kmon to check a service. A task is simply a json 
         "arguments": ["myminecraftserver.com"],
         "schedule": "48 * * * *"
     }
-    
+
 When the y2kmon process runs, it loads all valid tasks into memory, and runs the task when the *schedule* says to do so. A task tells y2kmon which *check* to use to see if the service is up or down. Any *arguments* the task contains are forwarded into the the *check*. The check returns OK, WARNING, or CRITICAL, which the proces can then handle.
 
 
@@ -34,7 +34,7 @@ When the y2kmon process runs, it loads all valid tasks into memory, and runs the
 
 All enabled tasks are loaded into memory. This probably won't scale well.
 
-    
+
 ## Config
 
 requires a file /config.json which contains the following directives:
