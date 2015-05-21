@@ -1,0 +1,8 @@
+{
+    "name": "example check file",
+    "description": "Checks to see if the file /dev/random exists",
+    "enabled": true,
+    "check": "check_file_exists",
+    "arguments": "/dev/random",
+    "schedule": "* * * * *"
+}

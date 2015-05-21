@@ -27,7 +27,7 @@ describe('Task', function() {
                 return done();
             });
         });
-    
+        
         it('should callback with false if an invalid task', function(done) {
             task.loadAndValidateTask(path.join(__dirname, 'blobs', 'notgood.json'), function(err, task) {
                 expect(err).to.be.null;
@@ -46,12 +46,22 @@ describe('Task', function() {
             });
         });
     });
-
+    
     describe('schedule()', function() {
         it('should schedule a check execution', function(done) {
             task.schedule(1, function(err, ok) {
                 expect(err).to.be.null;
                 expect(ok).to.be.true;
+                done();
+            });
+        });
+    });
+    
+    describe('execute()', function() {
+        it('should find the path of the task file and call check.execute', function(done) {
+            task.execute('example', function(err, result) {
+                expect(err).to.be.null;
+                expect(result).to.be.an(object);
                 done();
             });
         });

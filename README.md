@@ -67,4 +67,17 @@ run with `npm start`
   - made with hate by [Chris Grimmett] ...Oops I mean love
 
 
+## Desired workflow
+
+I want y2kmon to be super simple for new users. The workflow should be like this:
+
+* add e-mail address and mailgun key to config.json
+* `$ npm install`
+* `$ npm run`
+* put nagios scripts in the checks directory
+* put task json definitions in the tasks-enabled directory
+
+
+
+
 [Chris Grimmett]:http://grimtech.net/about
