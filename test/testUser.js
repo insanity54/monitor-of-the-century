@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var path = require('path');
-var task = require(path.join('..', 'lib', 'task'));
+var user = require(path.join('..', 'lib', 'user'));
 
 describe('User', function() {
     
@@ -8,36 +8,36 @@ describe('User', function() {
     describe('loadAndValidate()', function() {
         
         it('should call back with an object containing the user', function(done) {
-            user.loadAndValidate(path.join(__dirname, 'blobs', 'userMinimumGood.json'), function(err, task) {
-                expect(task).to.be.an('object');
-                expect(task).to.have.property('check');
-                expect(task).to.have.property('schedule');
+            user.loadAndValidate(path.join(__dirname, 'blobs', 'userMinimumGood.json'), function(err, user) {
+                expect(user).to.be.an('object');
+                expect(user).to.have.property('email').or();
+                expect(user).to.have.property('');
                 return done();
             });
         });
         
         it('should callback with error if file doesnt exist', function(done) {
-            task.loadAndValidate(path.join(__dirname, 'blobs', 'doesNotExist.json'), function(err, task) {
+            task.loadAndValidate(path.join(__dirname, 'blobs', 'doesNotExist.json'), function(err, user) {
                 expect(err).to.not.be.null;
-                expect(task).to.be.null;
+                expect(user).to.be.null;
                 return done();
             });
         });
         
-        it('should callback with false if an invalid task', function(done) {
-            task.loadAndValidate(path.join(__dirname, 'blobs', 'notgood.json'), function(err, task) {
+        it('should callback with false if an invalid user', function(done) {
+            task.loadAndValidate(path.join(__dirname, 'blobs', 'notgood.json'), function(err, user) {
                 expect(err).to.be.null;
-                expect(task).to.be.false;
+                expect(user).to.be.false;
                 return done();
             });
         });
         
         it('should callback with task object if valid task', function(done) {
-            task.loadAndValidate(path.join(__dirname, 'blobs', 'good.json'), function(err, task) {
+            task.loadAndValidate(path.join(__dirname, 'blobs', 'good.json'), function(err, user) {
                 expect(err).to.be.null;
-                expect(task).to.be.an('object');
-                expect(task).to.have.property('check');
-                expect(task).to.have.property('schedule');
+                expect(user).to.be.an('object');
+                expect(user).to.have.property('check');
+                expect(user).to.have.property('schedule');
                 return done();
             });
         });
