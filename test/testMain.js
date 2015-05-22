@@ -25,6 +25,24 @@ describe('Main', function() {
             done();
         });
     });
+    
+    it('should load valid enabled users into datastore', function(done) {
+        main(app);
+        data.get('users', function(err, users) {
+            expect(err).to.be.null;
+            expect(users).to.have.property('enabledUsers');
+            done();
+        });
+    });
+        
+    it('should load valid disabled users into datastore', function(done) {
+        main(app);
+        data.get('users', function(err, users) {
+            expect(err).to.be.null;
+            expect(users).to.have.property('disabledUsers');
+            done();
+        });
+    });
 
     it('should schedule enabled tasks');
     // it('should schedule enabled tasks', function(done) {

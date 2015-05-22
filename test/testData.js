@@ -37,5 +37,16 @@ describe('Data', function() {
             });
         });
     });
+    
+    describe('getUserByName()', function() {
+        it('should return a user given their name', function(done) {
+            data.getUserByName('admin', function(err, user) {
+                expect(err).to.be.null;
+                expect(user).to.be.an('object');
+                expect(user).to.have.property('method');
+                done();
+            });
+        });
+    });
 
 });
