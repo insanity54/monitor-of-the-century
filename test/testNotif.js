@@ -5,13 +5,11 @@ var notif = require(path.join('..', 'lib', 'notif'));
 describe('Notif', function() {
     
     describe('notify()', function() {
-        it('should throw if it only gets one parameter', function(done) {
-            expect(notif.notify('admin')).to.throw;
-            done();
-        });
-        
-        it('should throw if it doesnt get a callback parameter', function(done) {
-            expect(notif.notify('admin', 'message')).to.throw;
+
+        it('should throw if second param is not a callback', function(done) {
+            var e = new Error('second param must be a callback function');
+            var fn = notif.notify;
+            expect(fn.bind(fn, 'test message')).to.throw(e);
             done();
         });
         
