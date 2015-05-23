@@ -8,7 +8,7 @@ describe('Task', function() {
     describe('loadAndValidate()', function() {
         
         it('should call back with an object containing the task', function(done) {
-            task.loadAndValidateTask(path.join(__dirname, 'blobs', 'taskMinimumGood.json'), function(err, task) {
+            task.loadAndValidate(path.join(__dirname, 'blobs', 'taskMinimumGood.json'), function(err, task) {
                 expect(task).to.be.an('object');
                 expect(task).to.have.property('check');
                 expect(task).to.have.property('schedule');

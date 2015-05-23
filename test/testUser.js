@@ -10,14 +10,13 @@ describe('User', function() {
         it('should call back with an object containing the user', function(done) {
             user.loadAndValidate(path.join(__dirname, 'blobs', 'userMinimumGood.json'), function(err, user) {
                 expect(user).to.be.an('object');
-                expect(user).to.have.property('email').or();
-                expect(user).to.have.property('');
+                expect(user).to.have.property('email');
                 return done();
             });
         });
         
         it('should callback with error if file doesnt exist', function(done) {
-            task.loadAndValidate(path.join(__dirname, 'blobs', 'doesNotExist.json'), function(err, user) {
+            user.loadAndValidate(path.join(__dirname, 'blobs', 'userDoesNotExist.json'), function(err, user) {
                 expect(err).to.not.be.null;
                 expect(user).to.be.null;
                 return done();
@@ -25,40 +24,19 @@ describe('User', function() {
         });
         
         it('should callback with false if an invalid user', function(done) {
-            task.loadAndValidate(path.join(__dirname, 'blobs', 'notgood.json'), function(err, user) {
+            user.loadAndValidate(path.join(__dirname, 'blobs', 'userNotGood.json'), function(err, user) {
                 expect(err).to.be.null;
                 expect(user).to.be.false;
                 return done();
             });
         });
         
-        it('should callback with task object if valid task', function(done) {
-            task.loadAndValidate(path.join(__dirname, 'blobs', 'good.json'), function(err, user) {
+        it('should callback with user object if valid user', function(done) {
+            user.loadAndValidate(path.join(__dirname, 'blobs', 'userGood.json'), function(err, user) {
                 expect(err).to.be.null;
                 expect(user).to.be.an('object');
-                expect(user).to.have.property('check');
-                expect(user).to.have.property('schedule');
+                expect(user).to.have.property('email');
                 return done();
-            });
-        });
-    });
-    
-    describe('schedule()', function() {
-        it('should schedule a check execution', function(done) {
-            task.schedule(1, function(err, ok) {
-                expect(err).to.be.null;
-                expect(ok).to.be.true;
-                done();
-            });
-        });
-    });
-    
-    describe('execute()', function() {
-        it('should find the path of the task file and call check.execute', function(done) {
-            task.execute('example', function(err, result) {
-                expect(err).to.be.null;
-                expect(result).to.be.an(object);
-                done();
             });
         });
     });
