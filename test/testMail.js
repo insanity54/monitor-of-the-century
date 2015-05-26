@@ -36,6 +36,12 @@ describe('Mail', function() {
                 });
             });
         });
+        
+        it('should throw if not receiving a callback function', function(done) {
+            var fn = mail.send;
+            expect(fn.bind(fn, 'test email', 'test msg', 'recipient@example.com', 'sender@example.com')).to.throw(/requires a callback/);
+            done();
+        });
     });
     
     describe('s()', function() {

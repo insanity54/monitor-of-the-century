@@ -23,7 +23,7 @@ describe('Config', function() {
             }
             
             if (!config.hasOwnProperty('MAILGUN_KEY')) throw(new Error('config json does not contain MAILGUN_KEY directive'));
-            if (!config.hasOwnProperty('NOTIF_SENDER')) throw(new Error('config json does not contain NOTIF_SENDER directive'));
+            if (!config.hasOwnProperty('MAIL_SENDER')) throw(new Error('config json does not contain NOTIF_SENDER directive'));
             if (!config.hasOwnProperty('NOTIF_SUBJECT_PREFIX')) throw(new Error('config json does not contain NOTIF_SUBJECT_PREFIX directive'));
             if (!config.hasOwnProperty('NOTIF_LEVEL')) throw(new Error('config json does not contain NOTIF_LEVEL'));
             done();

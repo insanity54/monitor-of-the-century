@@ -9,6 +9,7 @@ describe('User', function() {
         
         it('should call back with an object containing the user', function(done) {
             user.loadAndValidate(path.join(__dirname, 'blobs', 'userMinimumGood.json'), function(err, user) {
+                expect(err).to.be.null;
                 expect(user).to.be.an('object');
                 expect(user).to.have.property('email');
                 return done();
@@ -23,7 +24,7 @@ describe('User', function() {
             });
         });
         
-        it('should callback with false if an invalid user', function(done) {
+        it('should callback with no error, false if an invalid user', function(done) {
             user.loadAndValidate(path.join(__dirname, 'blobs', 'userNotGood.json'), function(err, user) {
                 expect(err).to.be.null;
                 expect(user).to.be.false;

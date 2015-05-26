@@ -15,13 +15,28 @@ describe('Data', function() {
     });
     
     
+    describe('setSync()', function() {
+        it('should return 0 after setting a value', function() {
+            var reply = data.setSync('two_robots', 'human after all');
+            expect(reply).to.equal(0);
+        });
+    });
+    
+    
     describe('get()', function() {
-        it('should return a value', function(done) {
+        it('should callback with no errors and a value', function(done) {
             data.get('taco', function(err, value) {
                 expect(err).to.be.null;
                 expect(value).to.have.string('yes please');
                 done();
             });
+        });
+    });
+    
+    describe('getSync()', function() {
+        it('should return the string content of the key', function() {
+            var result = data.getSync('two_robots');
+            expect(result).to.equal('human after all');
         });
     });
     
@@ -47,6 +62,15 @@ describe('Data', function() {
                 done();
             });
         });
+        
+        it('should return error if no such user exists', function(done) {
+            data.getUserByName('Valentinez_Alkalinella_Xifax_Sicidabohertz_Gombigobilla_Blue_Stradivari_Talentrent_Pierre_Andri_Charton-Haymoss_Ivanovici_Baldeus_George_Doitzel_Kaiser_III', function(err, user) {
+                expect(err).to.match(/user does not exist/);
+                expect(user).to.be.null;
+                done();
+            });
+        });
     });
+    
 
 });

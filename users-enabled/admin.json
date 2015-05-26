@@ -1,6 +1,6 @@
 {
-    fullname: "Chris Grimmett",
-    email: "chris@grimtech.net",
-    phone: "12346781234",
-    method: "email"
+    "fullname": "Chris Grimmett",
+    "email": "chris@grimtech.net",
+    "phone": "12346781234",
+    "method": "email"
 }
