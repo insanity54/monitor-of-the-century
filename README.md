@@ -1,5 +1,7 @@
 # monitor-of-the-century
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/insanity54/monitor-of-the-century.svg)](https://greenkeeper.io/)
+
 ## About
 
 Monitor your services with this simple tool. Requires node.js and some packages downloadable from npm.
